@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile-jvm
     ports:
-      - "127.0.0.1:9000:8080"
+      - "127.0.0.1:9001:8080"
 
   graalvm:
     image: hello-world
@@ -17,7 +17,7 @@ services:
     volumes:
       - ./target/native-image:/tmp/native-image
     ports:
-      - "127.0.0.1:9000:8080"
+      - "127.0.0.1:9002:8080"
 
   native:
     image: hello-world
@@ -25,4 +25,4 @@ services:
       context: .
       dockerfile: Dockerfile-native
     ports:
-      - "127.0.0.1:9000:8080"
+      - "127.0.0.1:9003:8080"
