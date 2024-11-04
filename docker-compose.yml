@@ -1,8 +1,8 @@
-version: '2.4'
+
 services:
 
   jvm:
-    image: hello-world
+    image: 'alvartaco/native-clojure-lambda-jvm:0.0.1'
     build:
       context: .
       dockerfile: Dockerfile-jvm
@@ -10,7 +10,7 @@ services:
       - "127.0.0.1:9001:8080"
 
   graalvm:
-    image: hello-world
+    image: 'alvartaco/native-clojure-lambda-graalvm:0.0.1'
     build:
       context: .
       dockerfile: Dockerfile-graalvm
@@ -20,7 +20,7 @@ services:
       - "127.0.0.1:9002:8080"
 
   native:
-    image: hello-world
+    image: 'alvartaco/native-clojure-lambda-native:0.0.1'
     build:
       context: .
       dockerfile: Dockerfile-native

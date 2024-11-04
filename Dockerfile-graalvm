@@ -9,8 +9,8 @@ RUN curl --location --output /usr/local/bin/aws-lambda-rie \
     chmod a+x /usr/local/bin/aws-lambda-rie
 
 COPY lambda-bootstrap.sh /
-COPY target/uberjar/hello-world.jar /
+COPY target/uberjar/native-clojure-lambda.jar /
 
 CMD ["/lambda-bootstrap.sh", "/usr/bin/java", \
         "-agentlib:native-image-agent=config-merge-dir=/tmp/native-image,config-write-period-secs=5", \
-        "-jar", "hello-world.jar"]
+        "-jar", "native-clojure-lambda.jar"]

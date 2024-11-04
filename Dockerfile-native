@@ -8,15 +8,15 @@ RUN curl --location --output /usr/local/bin/aws-lambda-rie \
         https://github.com/aws/aws-lambda-runtime-interface-emulator/releases/latest/download/aws-lambda-rie && \
     chmod a+x /usr/local/bin/aws-lambda-rie
 
-COPY target/uberjar/hello-world.jar /
+COPY target/uberjar/native-clojure-lambda.jar /
 
 RUN native-image \
         --no-fallback \
         --report-unsupported-elements-at-runtime \
         --initialize-at-build-time \
         -H:+PrintAnalysisCallTree \
-        -jar hello-world.jar hello-world && \
-    chmod a+x hello-world
+        -jar native-clojure-lambda.jar native-clojure-lambda && \
+    chmod a+x native-clojure-lambda
 
 ########################################
 
@@ -25,6 +25,6 @@ FROM ubuntu
 COPY --from=builder /usr/local/bin/aws-lambda-rie /usr/local/bin/aws-lambda-rie
 
 COPY lambda-bootstrap.sh /
-COPY --from=builder /hello-world /
+COPY --from=builder /native-clojure-lambda /
 
-CMD ["/lambda-bootstrap.sh", "/hello-world"]
+CMD ["/lambda-bootstrap.sh", "/native-clojure-lambda"]

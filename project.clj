@@ -24,7 +24,7 @@
   :aliases {"kaocha" ["with-profile" "+kaocha" "run" "-m" "kaocha.runner"]}
   :plugins [[lein-ancient "0.6.15"]]
 
-  :profiles {:uberjar {:uberjar-name "hello-world.jar"
+  :profiles {:uberjar {:uberjar-name "native-clojure-lambda.jar"
                        :aot :all
                        :omit-source true}
              :dev {:dependencies [[lambdaisland/kaocha "1.0.732"]
